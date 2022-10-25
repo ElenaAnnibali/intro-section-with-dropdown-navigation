@@ -1,10 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState } from 'react';
-import Select from 'react-select';
+import Dropdown from './DropDown';
 
 const navBarStyles = css`
   display: flex;
+
+  a:hover {
+    color: #000;
+  }
 
   img {
     position: absolute;
@@ -14,32 +17,71 @@ const navBarStyles = css`
     top: 42px;
   }
 
-  a {
+  .firstDropdown {
     position: absolute;
     width: 56px;
     height: 16px;
-    left: 598px;
+    left: 187px;
     top: 42px;
+    color: #686868;
+  }
+
+  .firstList {
+    position: absolute;
+    left: 165px;
+    top: 50px;
+    width: 153px;
+    height: 190px;
+    padding-left: 30px;
+    text-align: left;
+
+    background: #ffffff;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.149126);
+    border-radius: 10px;
+  }
+
+  .secondDropdown {
+    position: absolute;
+    // width: 81px;
+    // height: 16px;
+    left: 306px;
+    top: 10px;
+    color: #686868;
+  }
+
+  .secondList {
+    position: absolute;
+    left: 290px;
+    top: 10px;
+    width: 120px;
+    height: 140px;
+
+    text-align: left;
+
+    background: #ffffff;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.149126);
+    border-radius: 10px;
+  }
+
+  .careers {
+    position: absolute;
+    width: 56px;
+    height: 16px;
+    left: 427px;
+    top: 42px;
+    font-size: 14px;
+    line-height: 16px;
   }
 
   .about {
-    left: 696px;
+    position: absolute;
+    width: 42px;
+    height: 16px;
+    left: 523px;
+    top: 42px;
+    font-size: 14px;
+    line-height: 16px;
   }
-`;
-const dropdownStyles = css`
-  position: absolute;
-  width: 160px;
-  height: 16px;
-  left: 187px;
-  top: 34px;
-`;
-
-const secondDropdownStyles = css`
-  position: absolute;
-  width: 160px;
-  height: 16px;
-  left: 396px;
-  top: 34px;
 `;
 
 const rightSideStyles = css`
@@ -48,6 +90,7 @@ const rightSideStyles = css`
   height: 42px;
   left: 1218px;
   top: 21px;
+  font-size: 14px;
 
   .login {
     position: absolute;
@@ -67,53 +110,27 @@ const rightSideStyles = css`
     bottom: 0%;
     border: 1.5px solid #686868;
     border-radius: 14px;
+
+    :hover {
+      border: 1.5px solid #000;
+    }
   }
 
   .register {
     position: absolute;
     height: 16px;
-    left: 14%;
+    left: 20%;
     right: 21.15%;
     top: calc(40% - 16px / 2);
   }
 `;
 
-const featuresOptions = [
-  { value: 'Todo List', label: 'Todo List' },
-  { value: 'Calendar', label: 'Calendar' },
-  { value: 'Reminders', label: 'Reminders' },
-  { value: 'Planning', label: 'Planning' },
-];
-
-const companyOptions = [
-  { value: 'History', label: 'History' },
-  { value: 'Our Team', label: 'Our Team' },
-  { value: 'Blog', label: 'Blog' },
-];
-
 export default function NavBar() {
-  const [selectedFeatOption, setSelectedFeatOption] = useState(null);
-  const [selectedCompOption, setSelectedCompOption] = useState(null);
-
   return (
     <div css={navBarStyles}>
       <img src="/images/logo.svg" alt="snap logo" />
-      <Select
-        css={dropdownStyles}
-        defaultValue={selectedFeatOption}
-        onChange={setSelectedFeatOption}
-        options={featuresOptions}
-        placeholder="Features"
-      />
-      <Select
-        css={secondDropdownStyles}
-        className="SecondDropdown"
-        defaultValue={selectedCompOption}
-        onChange={setSelectedCompOption}
-        options={companyOptions}
-        placeholder="Company"
-      />
-      <a>Careers</a>
+      <Dropdown />
+      <a className="careers">Careers</a>
       <a className="about">About</a>
       <div css={rightSideStyles}>
         <a className="login">Login</a>

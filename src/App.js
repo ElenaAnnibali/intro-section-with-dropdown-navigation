@@ -83,6 +83,7 @@ const buttonStyles = css`
   left: 165px;
   top: 578px;
   background: #151515;
+  border-color: #151515;
   border-radius: 15px;
   font-weight: 700;
   font-size: 18px;
@@ -90,6 +91,14 @@ const buttonStyles = css`
   text-align: center;
   letter-spacing: -0.25px;
   color: #fafafa;
+
+  :hover {
+    cursor: pointer;
+    background: #fff;
+    color: #151515;
+    border: 1px solid #151515;
+    border-radius: 15px;
+  }
 `;
 
 const heroImageStyles = css`
